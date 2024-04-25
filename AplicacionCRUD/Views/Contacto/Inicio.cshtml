@@ -1,0 +1,45 @@
+﻿@model List<AplicacionCRUD.Models.Contacto>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top: 30px;">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Lista de contacto</h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <a class="btn btn-success" href="@Url.Action("Registrar","Contacto")">Crear Nuevo</a>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Telefono</th>
+                        <th>Correo</th>
+                        <th style="width: 150px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nombres</td>
+                            <td>@item.Apellidos</td>
+                            <td>@item.Telefono</td>
+                            <td>@item.Correo</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="@Url.Action("Editar","Contacto",new {idContacto=item.idContacto})">Editar</a>
+                                <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar","Contacto",new {idContacto=item.idContacto})">Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
